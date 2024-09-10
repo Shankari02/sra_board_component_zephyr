@@ -1,0 +1,15 @@
+# West YAML for SRA board component
+
+build:
+  settings:
+    # These may be removed if unused
+    board_root: .
+    dts_root: .
+    soc_root: .
+    arch_root: .
+  cmake: .
+  kconfig: subsys/sra_board_component/Kconfig
+samples:
+  - samples
+tests:
+  - tests

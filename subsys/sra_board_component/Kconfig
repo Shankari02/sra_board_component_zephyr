@@ -1,0 +1,12 @@
+menuconfig SRA_BOARD_COMPONENT
+	bool "SRA Board Component"
+	help
+	  This option enables the SRA Board Component.
+
+if SRA_BOARD_COMPONENT
+
+module = SRA_BOARD_COMPONENT
+module-str = sra_board_component
+source "subsys/logging/Kconfig.template.log_config"
+
+endif # SRA_BOARD_COMPONENT

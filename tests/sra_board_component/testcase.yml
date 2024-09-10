@@ -1,0 +1,5 @@
+common:
+  tags: basic-tests
+tests:
+  sra_board_component:
+    min_ram: 8

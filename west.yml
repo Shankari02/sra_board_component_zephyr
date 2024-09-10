@@ -1,0 +1,11 @@
+# West file for SRA board component
+
+manifest:
+  remotes:
+    - name: zephyrproject-rtos
+      url-base: https://github.com/zephyrproject-rtos
+  projects:
+    - name: zephyr
+      remote: zephyrproject-rtos
+      revision: 8c32a82e47f5d1a2871ec99b0c8b61eb789f9fcb
+      import: true
