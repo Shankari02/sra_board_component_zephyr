@@ -51,7 +51,6 @@ void motor_thread(void)
         return;
     }
 
-    // Assuming the driver provides an API similar to the one in FreeRTOS
     enable_motor_driver(motor1, MOTOR_A_1);
 
     while (1) {
