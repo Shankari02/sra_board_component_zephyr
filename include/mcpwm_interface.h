@@ -1,9 +1,10 @@
 #ifndef MCPWM_INTERFACE_H
 #define MCPWM_INTERFACE_H
-#include <zephyr/zephyr.h>
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
 #include <zephyr/logging/log.h>
+#include <zephyr/drivers/pwm.h>
+
 /**
  * @brief Motor interface
  */
@@ -73,6 +74,10 @@ typedef struct {
     uint32_t resolution_hz; /*!< MCPWM timer resolution */
 } motor_mcpwm_config_t;
 
+
+#ifdef _cplusplus
+extern "C" {
+#endif
 /**
  * @brief Create Motor based on MCPWM peripheral
  *
@@ -83,4 +88,7 @@ typedef struct {
  */
 int motor_new_mcpwm_device(const motor_config_t *motor_config, const motor_mcpwm_config_t *mcpwm_config, motor_t** ret_motor);
 
+#ifdef _cplusplus
+}
+#endif
 #endif /* MCPWM_INTERFACE_H */

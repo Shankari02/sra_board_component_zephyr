@@ -7,9 +7,7 @@ build:
     dts_root: .
     soc_root: .
     arch_root: .
-  #cmake: .
+  cmake: .
   kconfig: subsys/sra_board_component/Kconfig
 samples:
   - samples
-tests:
-  - tests
