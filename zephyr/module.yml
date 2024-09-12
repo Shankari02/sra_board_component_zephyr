@@ -2,12 +2,12 @@
 
 build:
   settings:
-    # These may be removed if unused
-    board_root: .
+    #These may be removed if unused
+    board_root: 
     dts_root: .
     soc_root: .
     arch_root: .
-  cmake: .
+  #cmake: .
   kconfig: subsys/sra_board_component/Kconfig
 samples:
   - samples
