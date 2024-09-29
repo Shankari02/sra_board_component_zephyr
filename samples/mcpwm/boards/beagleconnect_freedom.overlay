@@ -6,10 +6,10 @@
 
 / {
 	aliases {
-		pwm_led0 = &pwm_leds;
+		pwm-led0 = &pwm_led0;
 	};
 
-	pwm_leds {
+	pwmleds {
 		compatible = "pwm-leds";
 		pwm_led0: pwm_led_0 {
 			pwms = <&pwm0 0 255 PWM_POLARITY_NORMAL>;
