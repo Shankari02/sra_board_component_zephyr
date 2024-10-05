@@ -17,44 +17,44 @@ struct motor_t {
      * @param motor Motor object handle
      * @return 0 on success, negative error code on failure
      */
-    int (*enable)(motor_t *motor);
+    int (*motor_enable)(motor_t *motor);
     /**
      * @brief Disable motor
      * @param motor Motor object handle
      * @return 0 on success, negative error code on failure
      */
-    int (*disable)(motor_t *motor);
+    int (*motor_disable)(motor_t *motor);
     /**
      * @brief Set motor speed
      * @param motor Motor object handle
      * @param speed Speed of motor, 0~100
      * @return 0 on success, negative error code on failure
      */
-    int (*set_speed)(motor_t *motor, uint32_t speed);
+    int (*motot_set_speed)(motor_t *motor, uint32_t speed);
     /**
      * @brief Set direction of motor to forward
      * @param motor Motor object handle
      * @return 0 on success, negative error code on failure
      */
-    int (*forward)(motor_t *motor);
+    int (*motor_forward)(motor_t *motor);
     /**
      * @brief Set direction of motor to backward
      * @param motor Motor object handle
      * @return 0 on success, negative error code on failure
      */
-    int (*backward)(motor_t *motor);
+    int (*motor_backward)(motor_t *motor);
     /**
      * @brief Brake motor
      * @param motor Motor object handle
      * @return 0 on success, negative error code on failure
      */
-    int (*brake)(motor_t *motor);
+    int (*motor_brake)(motor_t *motor);
     /**
      * @brief Delete motor object
      * @param motor Motor object handle
      * @return 0 on success, negative error code on failure
      */
-    int (*del)(motor_t *motor);
+    int (*motor_del)(motor_t *motor);
 };
 
 /**

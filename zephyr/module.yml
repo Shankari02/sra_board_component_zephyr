@@ -8,7 +8,7 @@ build:
     soc_root: .
     arch_root: .
   cmake: .
-  kconfig: subsys/sra_board_component/Kconfig
+  kconfig: subsys/sra/Kconfig
 samples:
   - samples
 tests:

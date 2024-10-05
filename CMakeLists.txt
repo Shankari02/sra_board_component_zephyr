@@ -5,4 +5,4 @@
 # SPDX-License-Identifier: Apache-2.0
 
 zephyr_include_directories(include)
-add_subdirectory(subsys/sra_board_component)
+add_subdirectory(subsys/sra)

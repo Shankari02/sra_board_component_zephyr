@@ -1,3 +1,0 @@
-zephyr_library()
-zephyr_include_directories(../include)
-zephyr_library_sources_ifdef(CONFIG_SRA_BOARD_COMPONENT  bar_graph.c)
