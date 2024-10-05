@@ -1,6 +1,6 @@
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
-//#include <sra/mcpwm_interface/mcpwm_interface.h>
+#include <sra/mcpwm_interface/mcpwm_interface.h>
 //#include <zephyr/logging/log.h>
 
 
