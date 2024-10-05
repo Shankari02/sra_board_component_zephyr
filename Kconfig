@@ -1,1 +1,1 @@
-source "subsys/sra/Kconfig"
+source "subsys/sra_board_component/Kconfig"
