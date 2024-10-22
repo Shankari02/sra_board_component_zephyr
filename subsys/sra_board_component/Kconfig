@@ -1,0 +1,33 @@
+menuconfig SRA_BOARD_COMPONENT
+	bool "SRA_BOARD_COMPONENT"
+	help
+	  This option enables the SRA Board Component.
+
+if SRA_BOARD_COMPONENT
+
+module = SRA_BOARD_COMPONENT
+module-str = sra_board_component
+source "subsys/logging/Kconfig.template.log_config"
+
+endif # SRA_BOARD_COMPONENT
+
+config GPIO_CC13XX_CC26XX
+	bool "TI SimpleLink CC13xx / CC26xx GPIO driver"
+	default y
+	depends on DT_HAS_TI_CC13XX_CC26XX_GPIO_ENABLED
+	help
+	  Enable the TI SimpleLink CC13xx / CC26xx GPIO driver.
+	  
+config PWM_CC13XX_CC26XX_TIMER
+	bool "TI SimpleLink CC13xx/CC26xx GPT timer PWM driver"
+	default y
+	depends on DT_HAS_TI_CC13XX_CC26XX_TIMER_PWM_ENABLED
+	help
+	  Enables TI SimpleLink CC13xx/CC26xx GPT timer PWM driver.
+
+config ADC_CC13XX_CC26XX
+	bool "CC13XX/CC26XX ADC driver"
+	default y
+	depends on DT_HAS_TI_CC13XX_CC26XX_ADC_ENABLED
+	help
+	  Enable the TI CC13XX/CC26XX ADC driver.
