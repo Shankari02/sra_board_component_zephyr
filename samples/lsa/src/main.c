@@ -1,28 +1,21 @@
-#include <zephyr/logging/log.h>
-#include <stdio.h>
-#include "adc.h" 
-#include "lsa.h"
-#include "utils.h"
+#include "sra_board.h"
 
 #define BLACK_MARGIN 4095
 #define WHITE_MARGIN 0
 #define CONSTRAIN_LSA_LOW 0
 #define CONSTRAIN_LSA_HIGH 1000
 
-static const struct pwm_dt_spec pwm_led0 = PWM_DT_SPEC_GET(DT_ALIAS(pwm_led0));
-
 int main(void)
 {
     // Enable line sensor
     enable_line_sensor();
-
+    printk("Line sensor enabled\n");
     line_sensor_array line_sensor_readings;
-
     while (1)
     {
-        // Get line sensor readings
+        printk("Inside while of main.c\n");
+        //  Get line sensor readings
         line_sensor_readings = read_line_sensor();
-        
         for (int i = 0; i < 5; i++)
         {
             // Constrain lsa readings between BLACK_MARGIN and WHITE_MARGIN
@@ -30,13 +23,12 @@ int main(void)
             // Map readings from (BLACK_MARGIN, WHITE_MARGIN) to (CONSTRAIN_LSA_LOW, CONSTRAIN_LSA_HIGH)
             line_sensor_readings.adc_reading[i] = map(line_sensor_readings.adc_reading[i], WHITE_MARGIN, BLACK_MARGIN, CONSTRAIN_LSA_LOW, CONSTRAIN_LSA_HIGH);
             line_sensor_readings.adc_reading[i] = 1000 - line_sensor_readings.adc_reading[i];
-            
+
             // Sleep for 10 ms
-            k_msleep(10);
+            k_sleep(K_MSEC(5));
         }
 
         // Log final lsa readings
-        printk("LSA_0: %d \t ",
-                 line_sensor_readings.adc_reading[0]);
+        printk("LSA_0: %d \t LSA_1: %d \t LSA_2: %d \t LSA_3: %d \t LSA_4: %d \n",line_sensor_readings.adc_reading[0], line_sensor_readings.adc_reading[1], line_sensor_readings.adc_reading[2], line_sensor_readings.adc_reading[3], line_sensor_readings.adc_reading[4]);
     }
 }
