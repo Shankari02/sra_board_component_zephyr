@@ -17,16 +17,24 @@ int motor_enable();
 int motor_disable();
 /**
  * @brief Set motor speed
+ * @param period between pulses
  * @return 0 on success, negative error code on failure
  */
-int motor_set_speed();
+int motor1_set_speed(int period);
+/**
+ * @brief Set motor speed
+ * @param period between pulses
+ * @return 0 on success, negative error code on failure
+ */
+int motor2_set_speed(int period);
 /**
  * @brief Set direction of motor to forward
  * @return 0 on success, negative error code on failure
  */
-int motor_forward();
+int motor_forward(int period);
 /**
  * @brief Set direction of motor to backward
+ * @param period between pulses
  * @return 0 on success, negative error code on failure
  */
 int motor_backward();

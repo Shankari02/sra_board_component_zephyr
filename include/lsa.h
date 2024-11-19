@@ -3,7 +3,7 @@
 
 #include <adc.h>
 
-#define NUMBER_OF_SAMPLES 64
+#define NUMBER_OF_SAMPLES 1024
 
 typedef union line_sensor_array
 {
@@ -16,7 +16,7 @@ typedef union line_sensor_array
         int A4;
     } lsa;
 
-    int adc_reading[1];
+    int adc_reading[5];
 } line_sensor_array;
 
 /**
