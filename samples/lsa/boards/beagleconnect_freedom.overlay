@@ -1,40 +1,96 @@
-/*
- * SPDX-License-Identifier: Apache-2.0
- *
- * Copyright (c) 2024 Ayush Singh <ayush@beagleboard.org>
- */
-
 / {
-	zephyr,user {
-		/* Reading mulitple pins not possible */
-		io-channels = <&adc0 0x09>;
-		io-channel-names = "MB1_AN";
+    zephyr,user {
+        /* Combine io-channels and io-channel-names into arrays */
+        io-channels = <&adc0 0x09>, <&adc0 0x0a>, <&adc0 0x0b>, <&adc0 0x0c>, <&adc0 0x0e>;
+        io-channel-names = "MB1_AN", "MB2_AN", "MB1_SCL", "MB1_SDA", "MB1_CS";
+    };
 
-		/*
-		 * io-channels = <&adc0 0x0a>;
-		 * io-channel-names = "MB2_AN";
-		 */
-	};
+    aliases {
+        pwm-led0 = &pwm_led0;
+        pwm-led1 = &pwm_led1;
+    };
 
-	aliases {
-		pwm-led0 = &pwm_led0;
-	};
-	pwmleds {
-		compatible = "pwm-leds";
-		pwm_led0: pwm_led_0 {
-			pwms = <&pwm0 0 255 PWM_POLARITY_NORMAL>;
-			label = "PWM MB1";
-		};
-	};
-	
+    pwmleds {
+        compatible = "pwm-leds";
+        
+        pwm_led0: pwm_led_0 {
+            pwms = <&pwm0 0 255 PWM_POLARITY_NORMAL>;
+            label = "PWM MB1";
+        };
+
+        pwm_led1: pwm_led_1 {
+            pwms = <&pwm0 0 255 PWM_POLARITY_NORMAL>;
+            label = "PWM MB2";
+        };
+    };
 };
+
+&adc0 {
+    status = "okay";
+
+    #address-cells = <1>;
+    #size-cells = <0>;
+
+    /* MB1 AN */
+    an_mb1: channel@9 {
+        reg = <9>;
+        zephyr,gain = "ADC_GAIN_1";
+        zephyr,reference = "ADC_REF_INTERNAL";
+        zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+        zephyr,resolution = <12>;
+    };
+
+    /* MB2 AN */
+    an_mb2: channel@a {
+        reg = <10>;
+        zephyr,gain = "ADC_GAIN_1";
+        zephyr,reference = "ADC_REF_INTERNAL";
+        zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+        zephyr,resolution = <12>;
+    };
+
+    /* MB1/2 SCL */
+    scl_mb1: channel@b {
+        reg = <11>;
+        zephyr,gain = "ADC_GAIN_1";
+        zephyr,reference = "ADC_REF_INTERNAL";
+        zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+        zephyr,resolution = <12>;
+    };
+
+    /* MB1/2 SDA */
+    sda_mb1: channel@c {
+        reg = <12>;
+        zephyr,gain = "ADC_GAIN_1";
+        zephyr,reference = "ADC_REF_INTERNAL";
+        zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+        zephyr,resolution = <12>;
+    };
+
+    /* MB1 CS */
+    cs_mb1: channel@e {
+        reg = <14>;
+        zephyr,gain = "ADC_GAIN_1";
+        zephyr,reference = "ADC_REF_INTERNAL";
+        zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+        zephyr,resolution = <12>;
+    };
+};
+
 &pinctrl {
-	pwm0_default: pwm0_default {
-		pinmux = <17 IOC_PORT_MCU_PORT_EVENT1>;
-		bias-disable;
-		drive-strength = <8>;
-	};
+    pwm0_default: pwm0_default {
+        pinmux = <17 IOC_PORT_MCU_PORT_EVENT1>;
+        bias-disable;
+        drive-strength = <8>;
+    };
+
+    pwm1_default: pwm1_default {
+        pinmux = <19 IOC_PORT_MCU_PORT_EVENT1>;
+        bias-disable;
+        drive-strength = <8>;
+    };
 };
+
 &gpt0 {
-	status = "okay";
+    status = "okay";
 };
