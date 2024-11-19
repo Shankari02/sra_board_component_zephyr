@@ -3,7 +3,7 @@
 build:
   settings:
     # These may be removed if unused
-    board_root: samples/lsa
+    board_root: .
     dts_root: .
     soc_root: .
     arch_root: .
